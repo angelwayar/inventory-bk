@@ -3,10 +3,11 @@ __pycache__
 *.xml
 *.db
 .idea
+.ini
 
 # environment
 /venv
 
 
-# migration
-app/migration
+# migrations
+app/infrastructure/migrations
