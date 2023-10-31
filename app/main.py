@@ -1,8 +1,15 @@
+import sys
 from typing import Union
 
 from fastapi import FastAPI
 
+sys.path.append("..")
+
+from app.api.product.product_routes import product_router
+
 app = FastAPI()
+
+app.include_router(product_router)
 
 
 @app.get("/")
