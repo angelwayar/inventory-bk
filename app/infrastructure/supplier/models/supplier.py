@@ -11,13 +11,19 @@ class Supplier(Base):
     __tablename__ = "suppliers"
 
     name: Mapped[str] = Column(String)
-    product: Mapped[List["Product"]] = relationship()
+    products: Mapped[List["Product"]] = relationship(back_populates='supplier')
 
-    # def to_entity(self) -> :
+    def to_entity(self) -> SupplierEntity:
+        return SupplierEntity(
+            id_=self.id_,
+            name=self.name,
+            products=self.products
+        )
 
     @staticmethod
     def from_entity(supplier: SupplierEntity) -> 'Supplier':
         return Supplier(
             id_=supplier.id_,
-            name=supplier.name
+            name=supplier.name,
+            producst=supplier.products
         )
